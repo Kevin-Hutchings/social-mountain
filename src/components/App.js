@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import './App.css';
+
 import Post from './Post/Post';
 import Header from './Header/Header';
 import Compose from './Compose/Compose';
@@ -16,6 +18,7 @@ class App extends Component {
     this.updatePost = this.updatePost.bind( this );
     this.deletePost = this.deletePost.bind( this );
     this.createPost = this.createPost.bind( this );
+    this.filterPosts = this.filterPosts.bind(this);
   }
   
   componentDidMount() {
@@ -39,13 +42,22 @@ class App extends Component {
     .then(res => this.setState({posts: res.data}));
   }
 
+  filterPosts(input){
+    const {posts} = this.state;
+
+    const filteredPosts = posts.filter((post) => {
+      return post.text.toLowerCase().includes(input.toLowerCase())
+    });
+    this.setState({posts: filteredPosts})
+  }
+
   render() {
     const { posts } = this.state;
 
     return (
       <div className="App__parent">
-        <Header />
-
+        <Header filter={this.filterPosts} />
+      
         <section className="App__content">
 
           <Compose createPostFn={this.createPost} />
