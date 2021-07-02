@@ -16,6 +16,7 @@ export default class Search extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleClear= this.handleClear.bind(this);
   }
 
   handleChange(e){
@@ -24,6 +25,11 @@ export default class Search extends Component {
 
   handleClick(){
     this.props.search(this.state.userInput);
+  }
+
+  handleClear(){
+    this.setState({userInput: ''});
+    this.props.reset();
   }
 
   render() {
@@ -38,6 +44,7 @@ export default class Search extends Component {
           />
 
           <SearchIcon id="Search__icon" onClick={this.handleClick}/>
+          <button id="reset-button" onClick={this.handleClear}> X </button>
         </div>
         
       </section>

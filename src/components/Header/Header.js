@@ -9,24 +9,9 @@ import Search from './Search/Search';
 //////////////////////////////////////////////////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 
 export default class Header extends Component {
-  // constructor(){
-  //   super();
-
-  //   this.state = {
-  //     posts: []
-  //   };
-  // }
-
-  // filterPosts(input){
-  //   let {state} = this.props;
-
-  //   let filteredPosts = state.filter((post) => {
-  //     return post.id.toLowerCase().includes(input.toLowerCase())
-  //   });
-  //   this.setState({posts: filteredPosts})
-  // }
-
   render() {
+    const {filter, reset} = this.props;
+
     return (
       <section className="Header__parent">
         <section className="Header__content">
@@ -39,7 +24,7 @@ export default class Header extends Component {
 
           {/* Displays the search bar */}
           <div className="Header__right">
-            <Search search={this.props.filter}/>
+            <Search search={filter} reset={reset}/>
 
             {/* Displays the profile icon */}
             <div className="Header__profile">

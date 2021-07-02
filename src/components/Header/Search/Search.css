@@ -21,6 +21,14 @@
   font-size: 20px;
   position: absolute;
   top: 6px;
-  right: 12px;
+  right: 30px;
   cursor: pointer;
+}
+
+#reset-button {
+  position: relative;
+  left: 5px;
+  border-radius: 21px;
+  border: 1px solid #2aabe2;
+  font-size: 20px;
 }

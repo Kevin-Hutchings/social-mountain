@@ -19,6 +19,7 @@ class App extends Component {
     this.deletePost = this.deletePost.bind( this );
     this.createPost = this.createPost.bind( this );
     this.filterPosts = this.filterPosts.bind(this);
+    this.reset = this.reset.bind(this);
   }
   
   componentDidMount() {
@@ -51,12 +52,16 @@ class App extends Component {
     this.setState({posts: filteredPosts})
   }
 
+  reset(){
+    this.componentDidMount();
+  }
+
   render() {
     const { posts } = this.state;
 
     return (
       <div className="App__parent">
-        <Header filter={this.filterPosts} />
+        <Header filter={this.filterPosts} reset={this.reset} />
       
         <section className="App__content">
 
