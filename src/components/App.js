@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   filterPosts(input){
+    //this isn't what the black diamond is asking for, but I kinda wanted to make sure the data flow worked, I'll try to refactor using encodeURI later.
     const {posts} = this.state;
 
     const filteredPosts = posts.filter((post) => {
