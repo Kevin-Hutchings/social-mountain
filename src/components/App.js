@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//Styling
 import './App.css';
 
+//Components
 import Post from './Post/Post';
 import Header from './Header/Header';
 import Compose from './Compose/Compose';
@@ -24,8 +26,7 @@ class App extends Component {
   
   componentDidMount() {
     axios.get('https://practiceapi.devmountain.com/api/posts')
-    .then((res) => this.setState({posts: res.data}))
-    .catch()
+    .then((res) => this.setState({posts: res.data}));
   }
 
   updatePost(id, text) {
@@ -53,7 +54,9 @@ class App extends Component {
   }
 
   reset(){
-    this.componentDidMount();
+    axios.get('https://practiceapi.devmountain.com/api/posts')
+    .then((res) => this.setState({posts: res.data}));
+    // this.componentDidMount(); also works, but idk if I should be using it like that.
   }
 
   render() {
@@ -67,16 +70,16 @@ class App extends Component {
 
           <Compose createPostFn={this.createPost} />
 
-          {posts.map( post => (
-          <Post 
-            key={post.id} 
-            text={post.text} 
-            date={post.date}
-            id={post.id}
-            updatePostFn={this.updatePost}
-            deletePostFn={this.deletePost}/> 
-            )) 
-          }
+          {posts.map(post => (
+            <Post 
+              key={post.id} 
+              text={post.text} 
+              date={post.date}
+              id={post.id}
+              updatePostFn={this.updatePost}
+              deletePostFn={this.deletePost} />
+            ))
+          };
 
         </section>
       </div>
